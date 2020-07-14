@@ -1,22 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
+import { Field, CellGroup, Button, Form, RadioGroup, Radio, Icon } from 'vant'
+
+Vue.use(Icon)
+Vue.use(Radio)
+Vue.use(RadioGroup)
+Vue.use(Field)
+Vue.use(Form)
+Vue.use(CellGroup)
+Vue.use(Button)
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'main',
+    component: () => import('../views/liveroom/index.vue'),
+    meta: { requiresAuth: true }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/login/index.vue')
   }
 ]
 
