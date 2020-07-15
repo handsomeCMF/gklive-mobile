@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="logo">
-      <img src="../../assets/leimu.png"/>
+      <img v-lazy="require('../../assets/leimu.png')"/>
     </div>
     <div id="login" v-show="islogin">
       <van-form @submit="loginUser">
@@ -117,6 +117,7 @@ export default {
           console.log(res)
           if (res.status === 200) {
             Toast.success('注册成功,去登陆')
+            this.islogin = true
           } else {
             Dialog.alert({ message: '访问失败!' })
           }

@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import { Field, CellGroup, Button, Form, RadioGroup, Radio, Icon } from 'vant'
+import { Field, CellGroup, Button, Form, RadioGroup, Radio, Icon, NavBar, Cell } from 'vant'
 
+Vue.use(Cell)
+
+Vue.use(NavBar)
 Vue.use(Icon)
 Vue.use(Radio)
 Vue.use(RadioGroup)
@@ -16,14 +19,30 @@ const routes = [
   {
     path: '/',
     name: 'main',
-    component: () => import('../views/liveroom/index.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/Main.vue'),
+    meta: { requiresAuth: true },
+    children: [{
+      path: '/home',
+      name: 'home',
+      component: () => import('../views/home/index.vue')
+    },
+    {
+      path: '/star',
+      name: 'star',
+      component: () => import('../views/star/index.vue')
+    },
+    {
+      path: '/mine',
+      name: 'mine',
+      component: () => import('../views/mine/index.vue')
+    }]
   },
   {
     path: '/login',
     name: 'login',
     component: () => import('../views/login/index.vue')
   }
+
 ]
 
 const router = new VueRouter({
