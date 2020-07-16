@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import { CookieExist } from './utils/common/cookieUtils.js'
 
-import { Lazyload } from 'vant'
+import { Lazyload, Dialog } from 'vant'
+Vue.use(Dialog)
 Vue.use(Lazyload)
 
 Vue.config.productionTip = false

@@ -1,8 +1,9 @@
 <template>
     <div id="app">
-        <div id="navBar">
+        <!-- <div id="navBar">
             <van-nav-bar title="背锅侠" left-text="返回" right-text="确定" left-arrow></van-nav-bar>
-        </div>
+        </div> -->
+
         <router-view/>
         <div id="footbar">
             <router-link to="/home" @click.native="choseTab('home')" >
@@ -44,11 +45,12 @@ a:visited{
 </style>
 <script>
 import tab from '../components/tab'
+
 export default {
   components: { tab },
   data () {
     return {
-      selectBar: 'home',
+      selectBar: this.$route.path.replace(/^(\/(\w+))\/?/gi, '$2'),
       activeStyle: { color: 'red' }
     }
   },
@@ -57,5 +59,6 @@ export default {
       this.selectBar = value
     }
   }
+
 }
 </script>

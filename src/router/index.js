@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import { Field, CellGroup, Button, Form, RadioGroup, Radio, Icon, NavBar, Cell } from 'vant'
+import { Field, CellGroup, Button, Form, RadioGroup, Radio, Icon, NavBar, Cell, ActionSheet } from 'vant'
 
+Vue.use(ActionSheet)
 Vue.use(Cell)
-
 Vue.use(NavBar)
 Vue.use(Icon)
 Vue.use(Radio)
@@ -19,6 +19,7 @@ const routes = [
   {
     path: '/',
     name: 'main',
+    redirect: '/home',
     component: () => import('../views/Main.vue'),
     meta: { requiresAuth: true },
     children: [{
