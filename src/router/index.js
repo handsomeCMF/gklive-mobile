@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import { Field, CellGroup, Button, Form, RadioGroup, Radio, Icon, NavBar, Cell, ActionSheet } from 'vant'
+import { Field, CellGroup, Button, Form, RadioGroup, Radio, Icon, NavBar, Cell, ActionSheet, PullRefresh, Empty, Loading } from 'vant'
 
+Vue.use(Loading)
+Vue.use(Empty)
+Vue.use(PullRefresh)
 Vue.use(ActionSheet)
 Vue.use(Cell)
 Vue.use(NavBar)
@@ -42,6 +45,16 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('../views/login/index.vue')
+  },
+  {
+    path: '/liveroom',
+    name: 'liveroom',
+    component: () => import('../views/home/liveroom.vue')
+  },
+  {
+    path: '/helloWorld',
+    name: 'helloWorld',
+    component: () => import('../views/home/HelloWorld.vue')
   }
 
 ]

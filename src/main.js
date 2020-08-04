@@ -9,6 +9,7 @@ Vue.use(Dialog)
 Vue.use(Lazyload)
 
 Vue.config.productionTip = false
+Vue.prototype.$domain = 'api/v1/'
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {

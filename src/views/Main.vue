@@ -1,11 +1,11 @@
 <template>
-    <div id="app">
+    <div id="app" >
         <!-- <div id="navBar">
             <van-nav-bar title="背锅侠" left-text="返回" right-text="确定" left-arrow></van-nav-bar>
         </div> -->
 
-        <router-view/>
-        <div id="footbar">
+        <router-view id="main" :style="barHeight" />
+        <div ref="bar" id="footbar">
             <router-link to="/home" @click.native="choseTab('home')" >
                 <tab tabname='主页' iconname='wap-home-o' :style="selectBar=='home'?activeStyle:''"></tab>
             </router-link>
@@ -22,6 +22,9 @@
 <style scoped>
 #app{
     background-color: rgb(247, 248, 250);
+}
+#main{
+  margin-bottom: 5px;
 }
 .van-icon{
     size: 20px;
@@ -51,14 +54,18 @@ export default {
   data () {
     return {
       selectBar: this.$route.path.replace(/^(\/(\w+))\/?/gi, '$2'),
-      activeStyle: { color: 'red' }
+      activeStyle: { color: 'red' },
+      barHeight: null
     }
   },
   methods: {
     choseTab: function (value) {
       this.selectBar = value
     }
+  },
+  mounted () {
+    const heigth = window.screen.height - this.$refs.bar.offsetHeight
+    this.barHeight = { height: `${heigth}px` }
   }
-
 }
 </script>
